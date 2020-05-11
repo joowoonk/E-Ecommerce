@@ -26,7 +26,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
 
-    let createdAt = `${year}` + `/` + `${month}` + `/` + `${day}`;
+    let createdAt = `${year}``/``${month}``/``${day}`;
     try {
       await userRef.set({
         displayName,
