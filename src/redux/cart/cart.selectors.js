@@ -10,6 +10,11 @@ export const selectCartItems = createSelector(
   (cart) => cart.cartItems //6
 );
 
+export const selectCartHidden = createSelector(
+  [selectCart],
+  (cart) => cart.hidden
+);
+
 export const selectCartItemsCount = createSelector(
   //1 selectCartItemsCount being called from cart-icon cmp.
   [selectCartItems], // 2 look for the variable which will find selectCartItems on line 7
@@ -22,4 +27,15 @@ export const selectCartItemsCount = createSelector(
         accumalatedQuantity + cartItem.quantity,
       0
     )
+);
+
+export const selectCartTotal = createSelector([selectCartItems], (
+  cartItems //7
+) =>
+  cartItems.reduce(
+    //8
+    (accumalatedQuantity, cartItem) =>
+      accumalatedQuantity + cartItem.quantity * cartItem.price,
+    0
+  )
 );
