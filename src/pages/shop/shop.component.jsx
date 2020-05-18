@@ -7,7 +7,7 @@ import CollectionsOverview from "../../components/collections-overview/collectio
 import CollectionPage from "../collection/collection.component";
 
 const ShopPage = ({ match }) => {
-  console.log();
+  // console.log();
   return (
     //notice match gets here using Route from App js as parent's cmp to here
     <div className="shop-page">
