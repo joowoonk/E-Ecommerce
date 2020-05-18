@@ -11,7 +11,8 @@ const middlewares = [logger];
 
 if (process.env.NODE_ENV === "development") {
   middlewares.push(logger);
-}
+} // throguh this, heroku app wont show any logger, because heroku is not under development, rather production.
+
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 //then ...midlewares replaced by logger
 
