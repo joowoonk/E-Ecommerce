@@ -6,13 +6,12 @@ import logger from "redux-logger";
 
 import rootReducer from "./root-reducer";
 
-const middlewares = [];
+const middlewares = [logger];
 //if we comment out line 6
 
 if (process.env.NODE_ENV === "development") {
   middlewares.push(logger);
 }
-
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 //then ...midlewares replaced by logger
 
