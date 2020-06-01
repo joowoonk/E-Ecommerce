@@ -2,16 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 
 import FormInput from "../form-input/form-input.component";
-import CustomButton from "../custom-button/custom-button.compoent";
-
-// import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+import CustomButton from "../custom-button/custom-button.component";
 
 import {
   googleSignInStart,
   emailSignInStart,
 } from "../../redux/user/user.actions";
 
-import "./sign-in.styles.scss";
+import {
+  SignInContainer,
+  SignInTitle,
+  ButtonsBarContainer,
+} from "./sign-in.styles";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -28,12 +30,6 @@ class SignIn extends React.Component {
     const { emailSignInStart } = this.props;
     const { email, password } = this.state;
 
-    // try {
-    //   await auth.signInWithEmailAndPassword(email, password);
-    //   this.setState({ email: "", password: "" });
-    // } catch (error) {
-    //   console.log(error);
-    // }
     emailSignInStart(email, password);
   };
 
@@ -46,45 +42,39 @@ class SignIn extends React.Component {
   render() {
     const { googleSignInStart } = this.props;
     return (
-      <div className="sign-in">
-        <h2>I already have an account</h2>
+      <SignInContainer>
+        <SignInTitle>I already have an account</SignInTitle>
         <span>Sign in with your email and password</span>
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
             type="email"
-            value={this.state.email}
             handleChange={this.handleChange}
+            value={this.state.email}
             label="email"
             required
           />
-          {/* <label>Email</label> */}
           <FormInput
             name="password"
-            value={this.state.password}
             type="password"
+            value={this.state.password}
             handleChange={this.handleChange}
             label="password"
             required
           />
-          {/* <label>Password</label> */}
-          <div className="buttons">
-            {" "}
-            <CustomButton type="submit" value="Submit Form">
-              Sign in
-            </CustomButton>
+          <ButtonsBarContainer>
+            <CustomButton type="submit"> Sign in </CustomButton>
             <CustomButton
               type="button"
               onClick={googleSignInStart}
-              value="Submit Form"
               isGoogleSignIn
             >
               Sign in with Google
             </CustomButton>
-          </div>
+          </ButtonsBarContainer>
         </form>
-      </div>
+      </SignInContainer>
     );
   }
 }
