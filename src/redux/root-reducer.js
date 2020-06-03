@@ -1,8 +1,5 @@
-// comibine other reducers into this file.
-
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
-//To make All Reducers to be persistent
 import storage from "redux-persist/lib/storage";
 
 import userReducer from "./user/user.reducer";
@@ -14,14 +11,13 @@ const persistConfig = {
   key: "root",
   storage,
   whitelist: ["cart"],
-  //cart is coming from cart from combineReducers
 };
 
-const rootReucer = combineReducers({
+const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
   directory: directoryReducer,
   shop: shopReducer,
 });
 
-export default persistReducer(persistConfig, rootReucer);
+export default persistReducer(persistConfig, rootReducer);
